@@ -57,7 +57,9 @@
 
                     <br>
 
-                    <form action="{{ route('cart.add') }}" method="POST">
+                    <form action="{{ route('cart.add') }}"
+                        method="POST"
+                        class="add-to-cart-form">
                         @csrf
 
                         <input type="hidden" name="id" value="101">
@@ -115,7 +117,9 @@
 
                     <br>
 
-                    <form action="{{ route('cart.add') }}" method="POST">
+                    <form action="{{ route('cart.add') }}"
+                                    method="POST"
+                                    class="add-to-cart-form">
                         @csrf
 
                         <input type="hidden" name="id" value="102">
@@ -171,7 +175,9 @@
 
                     <br>
 
-                    <form action="{{ route('cart.add') }}" method="POST">
+                    <form action="{{ route('cart.add') }}"
+                                method="POST"
+                                class="add-to-cart-form">
                         @csrf
 
                         <input type="hidden" name="id" value="103">
@@ -229,7 +235,9 @@
 
                     <br>
 
-                    <form action="{{ route('cart.add') }}" method="POST">
+                    <form action="{{ route('cart.add') }}"
+                                method="POST"
+                                class="add-to-cart-form">
                         @csrf
 
                         <input type="hidden" name="id" value="104">
@@ -285,7 +293,9 @@
 
                     <br>
 
-                    <form action="{{ route('cart.add') }}" method="POST">
+                    <form action="{{ route('cart.add') }}"
+                                    method="POST"
+                                    class="add-to-cart-form">
                         @csrf
 
                         <input type="hidden" name="id" value="105">
@@ -343,7 +353,9 @@
 
                     <br>
 
-                    <form action="{{ route('cart.add') }}" method="POST">
+                    <form action="{{ route('cart.add') }}"
+                                method="POST"
+                                class="add-to-cart-form">
                         @csrf
 
                         <input type="hidden" name="id" value="106">

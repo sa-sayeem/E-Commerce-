@@ -37,7 +37,7 @@
                 <div style="margin-top: 30px;">
 
                     <div style="margin-bottom: 25px;">
-                        <h3>📍 Address</h3>
+                        <h3><b>📍 Address</b></h3>
                         <p>
                             Mirpur-2 ,Dhaka, Bangladesh.
                         </p>
@@ -45,7 +45,7 @@
 
 
                     <div style="margin-bottom: 25px;">
-                        <h3>📞 Phone</h3>
+                        <h3><b>📞 Phone</b></h3>
                         <p>
                             +880 1719887675
                         </p>
@@ -53,7 +53,7 @@
 
 
                     <div style="margin-bottom: 25px;">
-                        <h3>📧 Email</h3>
+                        <h3><b>📧 Email</b></h3>
                         <p>
                             support@VELORA.com
                         </p>
@@ -61,11 +61,11 @@
 
 
                     <div>
-                        <h3>🕒 Business Hours</h3>
+                        <h3><b>🕒 Business Hours</b></h3>
                         <p>
-                            Monday – Saturday<br>
+                            Saturday – Thuesday<br>
                             10:00 AM – 8:00 PM <br>
-                            Sunday: Closed
+                            Friday: Closed
                         </p>
                     </div>
 

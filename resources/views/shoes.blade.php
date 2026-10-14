@@ -6,7 +6,7 @@
 
 <!-- Page Header -->
 <section class="page-header">
-    <h1>Our Shoes</h1>
+    <h1><b>Our Shoes</b></h1>
     <p>Discover the perfect pair for every style and occasion.</p>
 </section>
 
@@ -17,7 +17,7 @@
     <div class="container">
 
         <h2 class="section-title">
-            Latest Shoes
+            <b>Latest Shoes</b>
         </h2>
 
         <div class="products">
@@ -56,7 +56,9 @@
 
                     <br>
 
-                    <form action="{{ route('cart.add') }}" method="POST">
+                    <form action="{{ route('cart.add') }}"
+                                    method="POST"
+                                    class="add-to-cart-form">
                         @csrf
 
                         <input type="hidden" name="id" value="1">
@@ -111,7 +113,9 @@
 
                     <br>
 
-                    <form action="{{ route('cart.add') }}" method="POST">
+                    <form action="{{ route('cart.add') }}"
+                            method="POST"
+                            class="add-to-cart-form">
                         @csrf
 
                         <input type="hidden" name="id" value="2">
@@ -164,7 +168,9 @@
 
                     <br>
 
-                    <form action="{{ route('cart.add') }}" method="POST">
+                    <form action="{{ route('cart.add') }}"
+                            method="POST"
+                            class="add-to-cart-form">
                         @csrf
 
                         <input type="hidden" name="id" value="3">
@@ -219,7 +225,9 @@
 
                     <br>
 
-                    <form action="{{ route('cart.add') }}" method="POST">
+                    <form action="{{ route('cart.add') }}"
+                            method="POST"
+                            class="add-to-cart-form">
                         @csrf
 
                         <input type="hidden" name="id" value="4">
@@ -272,7 +280,9 @@
 
                     <br>
 
-                    <form action="{{ route('cart.add') }}" method="POST">
+                    <form action="{{ route('cart.add') }}"
+                                method="POST"
+                                class="add-to-cart-form">
                         @csrf
 
                         <input type="hidden" name="id" value="5">
@@ -327,7 +337,9 @@
 
                     <br>
 
-                    <form action="{{ route('cart.add') }}" method="POST">
+                    <form action="{{ route('cart.add') }}"
+                                method="POST"
+                                class="add-to-cart-form">
                         @csrf
 
                         <input type="hidden" name="id" value="6">
@@ -346,36 +358,151 @@
                 </div>
 
             </div>
+              <!-- ================= SHOE 7 ================= -->
+     <div class="product-card">
+
+                <div class="product-image">
+
+                    <span class="badge">SALE</span>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D"
+                        alt="Street Fashion Shoes"
+                    >
+
+                </div>
+
+                <div class="product-info">
+
+                    <div class="product-category">
+                        Fashion
+                    </div>
+
+                    <h3 class="product-name">
+                        Street Fashion Shoes
+                    </h3>
+
+                    <div class="product-price">
+                        ৳2500
+                    </div>
+
+                    <p>
+                        Available Sizes: 40, 41, 42, 43, 44
+                    </p>
+
+                    <br>
+
+                    <form action="{{ route('cart.add') }}"
+                            method="POST"
+                            class="add-to-cart-form">
+                        @csrf
+
+                        <input type="hidden" name="id" value="7">
+                        <input type="hidden" name="name" value="Street Fashion Shoes">
+                        <input type="hidden" name="price" value="2500">
+                        <input type="hidden" name="category" value="Shoes">
+                        <input type="hidden" name="size" value="42">
+                        <input type="hidden" name="image"
+                            value="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D">
+
+                        <button type="submit" class="btn">
+                            Add to Cart
+                        </button>
+                    </form>
+
+                </div>
+
+            </div>
 
         </div>
 
     </div>
 
+        </div>
+
+        </div>
+   
+    
+    
+
 </section>
-                <style>
-                    /* Image Zoom - Shoes & Clothes */
+            <style>
+                /* Magnifying Glass Zoom */
+                .product-image {
+                    position: relative;
+                    overflow: hidden;
+                    cursor: crosshair;
+                }
 
-                    .product-card {
-                        overflow: hidden;
+                .product-image img {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                /* Circular magnifier */
+                .magnifier-lens {
+                    position: absolute;
+                    width: 150px;
+                    height: 150px;
+                    border: 3px solid white;
+                    border-radius: 50%;
+                    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+                    pointer-events: none;
+                    display: none;
+                    z-index: 20;
+                    background-repeat: no-repeat;
+                }
+            </style>
+         <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                document.querySelectorAll('.product-image').forEach(function (box) {
+                    const img = box.querySelector('img');
+
+                    if (!img) return;
+
+                    const lens = document.createElement('div');
+                    lens.className = 'magnifier-lens';
+                    box.appendChild(lens);
+
+                    const zoom = 2.5;
+
+                    function setupLens() {
+                        lens.style.backgroundImage = `url("${img.currentSrc || img.src}")`;
+                        lens.style.backgroundSize =
+                            `${img.clientWidth * zoom}px ${img.clientHeight * zoom}px`;
                     }
 
-                    .product-image {
-                        overflow: hidden;
-                        position: relative;
-                    }
+                    img.addEventListener('load', setupLens);
+                    if (img.complete) setupLens();
 
-                    .product-image img {
-                        display: block;
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                        transition: transform 0.4s ease;
-                        transform-origin: center;
-                    }
+                    box.addEventListener('mouseenter', function () {
+                        setupLens();
+                        lens.style.display = 'block';
+                    });
 
-                    .product-card:hover .product-image img {
-                        transform: scale(1.12);
-                    }
-                </style>
+                    box.addEventListener('mousemove', function (event) {
+                        const rect = img.getBoundingClientRect();
+                        const lensSize = lens.offsetWidth;
 
+                        let x = event.clientX - rect.left;
+                        let y = event.clientY - rect.top;
+
+                        x = Math.max(0, Math.min(x, rect.width));
+                        y = Math.max(0, Math.min(y, rect.height));
+
+                        lens.style.left = `${x - lensSize / 2}px`;
+                        lens.style.top = `${y - lensSize / 2}px`;
+
+                        lens.style.backgroundPosition =
+                            `${lensSize / 2 - x * zoom}px ${lensSize / 2 - y * zoom}px`;
+                    });
+
+                    box.addEventListener('mouseleave', function () {
+                        lens.style.display = 'none';
+                    });
+                });
+            });
+        </script>
 @endsection
