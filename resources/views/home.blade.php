@@ -8,6 +8,25 @@
 <section class="hero">
 
     <div class="container">
+        <!-- Product Search Bar -->
+                <div class="home-search-container">
+                    <div class="home-search-box">
+                        <span class="search-icon">&#128269;</span>
+
+                        <input
+                            type="search"
+                            id="homeProductSearch"
+                            placeholder="Search shoes, clothing..."
+                            autocomplete="off"
+                        >
+
+                        <button type="button" id="clearHomeSearch">
+                            Clear
+                        </button>
+                    </div>
+
+                    <p id="searchResultMessage" aria-live="polite"></p>
+                </div>
 
         <div class="hero-content">
 
@@ -128,6 +147,7 @@
         <h2 class="section-title">
             Featured Products
         </h2>
+        
 
         <div class="products">
 
@@ -431,5 +451,67 @@
                 transform: scale(1.12);
             }
         </style>
+        <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const searchInput = document.getElementById('homeProductSearch');
+                    const clearButton = document.getElementById('clearHomeSearch');
+                    const resultMessage = document.getElementById('searchResultMessage');
 
+                    if (!searchInput || !clearButton || !resultMessage) {
+                        return;
+                    }
+
+                    // Find Featured Products on the Home Page.
+                    const sections = document.querySelectorAll('.section');
+                    let productCards = [];
+
+                    sections.forEach(function (section) {
+                        if (section.querySelector('.products')) {
+                            productCards = Array.from(
+                                section.querySelectorAll('.product-card')
+                            );
+                        }
+                    });
+
+                    function filterProducts() {
+                        const query = searchInput.value.trim().toLowerCase();
+                        let visibleCount = 0;
+
+                        productCards.forEach(function (card) {
+                            const productText = card.textContent.toLowerCase();
+                            const matches = productText.includes(query);
+
+                            card.style.display = matches ? '' : 'none';
+
+                            if (matches) {
+                                visibleCount++;
+                            }
+                        });
+
+                        if (query === '') {
+                            resultMessage.textContent = '';
+                        } else if (visibleCount === 0) {
+                            resultMessage.textContent = 'No products found.';
+                        } else {
+                            resultMessage.textContent =
+                                visibleCount + ' product(s) found.';
+                        }
+                    }
+
+                    searchInput.addEventListener('input', filterProducts);
+
+                    clearButton.addEventListener('click', function () {
+                        searchInput.value = '';
+                        filterProducts();
+                        searchInput.focus();
+                    });
+
+                    searchInput.addEventListener('keydown', function (event) {
+                        if (event.key === 'Escape') {
+                            searchInput.value = '';
+                            filterProducts();
+                        }
+                    });
+                });
+</script>
 @endsection

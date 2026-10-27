@@ -597,6 +597,44 @@
 
     });
     </script>
+                    <style>
+                .home-search-container {
+                    max-width: 650px;
+                    margin: 25px auto 35px;
+                    padding: 0 15px;
+                }
+
+                .home-search-box {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    padding: 8px 12px 8px 20px;
+                    background: #fff;
+                    border: 1px solid #d8cbb8;
+                    border-radius: 50px;
+                }
+
+                .home-search-box input {
+                    flex: 1;
+                    min-width: 0;
+                    border: none;
+                    outline: none;
+                    padding: 12px 0;
+                }
+
+                .home-search-box button {
+                    background: #171717;
+                    color: white;
+                    border: none;
+                    border-radius: 30px;
+                    padding: 11px 18px;
+                    cursor: pointer;
+                }
+
+                .home-search-box button:hover {
+                    background: #8b7355;
+                }
+                </style>
 
 </body>
 </html>

@@ -1,0 +1,17 @@
+VELORA Premium Fashion Store — updated project
+
+Design updates:
+- Premium black, white and beige visual theme across shared layout and pages.
+- Consistent VELORA page titles.
+- Shared circular magnifier zoom for product images on desktop (shoes, clothing and featured products).
+- Responsive product grids and improved mobile styling.
+- Existing named routes, session cart, AJAX add/update/remove behavior, and contact form/database integration preserved.
+
+Run locally:
+1. Keep your existing .env file if you already have one. This package intentionally excludes .env because it can contain local secrets.
+2. If you do not have .env, copy .env.example to .env and configure your database.
+3. If APP_KEY is empty, run: php artisan key:generate
+4. Run: php artisan migrate
+5. Run: php artisan serve
+
+If using XAMPP, place the project under htdocs and open it through your configured Laravel local URL. Do not overwrite your existing .env when copying these files over an existing project.

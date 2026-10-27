@@ -87,9 +87,21 @@
                 <h2 style="margin-bottom: 25px;">
                     Send Us a Message
                 </h2>
+                        @if(session('success'))
+                            <div style="background:#d1e7dd; color:#0f5132;
+                                        padding:12px; border-radius:8px; margin-bottom:20px;">
+                                {{ session('success') }}
+                            </div>
+                        @endif
 
-                <form action="#" method="POST">
+                        @if($errors->any())
+                            <div style="background:#f8d7da; color:#842029;
+                                        padding:12px; border-radius:8px; margin-bottom:20px;">
+                                Please correct the errors in the form.
+                            </div>
+                        @endif
 
+                    <form action="{{ route('contact.send') }}" method="POST">
                     @csrf
 
                     <!-- Name -->
@@ -100,19 +112,18 @@
                         </label>
 
                         <input
-                            type="text"
-                            name="name"
-                            placeholder="Enter your name"
-                            required
-                            style="
-                                width: 100%;
-                                padding: 13px;
-                                margin-top: 7px;
-                                border: 1px solid #ddd;
-                                border-radius: 8px;
-                                font-size: 15px;
-                            "
-                        >
+                                type="text"
+                                name="name"
+                                value="{{ old('name') }}"
+                                placeholder="Enter your name"
+                                maxlength="255"
+                                required
+                                style="width:100%; padding:13px; margin-top:7px;
+                                border:1px solid #ddd; border-radius:8px; font-size:15px;"
+                            >
+                            @error('name')
+                                <small style="color:red;">{{ $message }}</small>
+                            @enderror
 
                     </div>
 
@@ -125,21 +136,19 @@
                         </label>
 
                         <input
-                            type="email"
-                            name="email"
-                            placeholder="Enter your email"
-                            required
-                            style="
-                                width: 100%;
-                                padding: 13px;
-                                margin-top: 7px;
-                                border: 1px solid #ddd;
-                                border-radius: 8px;
-                                font-size: 15px;
-                            "
-                        >
-
-                    </div>
+                                type="email"
+                                name="email"
+                                value="{{ old('email') }}"
+                                placeholder="Enter your email"
+                                maxlength="255"
+                                required
+                                style="width:100%; padding:13px; margin-top:7px;
+                                border:1px solid #ddd; border-radius:8px; font-size:15px;"
+                            >
+                            @error('email')
+                                <small style="color:red;">{{ $message }}</small>
+                            @enderror
+                         </div>
 
 
                     <!-- Phone -->
@@ -149,19 +158,19 @@
                             Phone Number
                         </label>
 
-                        <input
-                            type="text"
+                       <input
+                            type="tel"
                             name="phone"
+                            value="{{ old('phone') }}"
                             placeholder="Enter your phone number"
-                            style="
-                                width: 100%;
-                                padding: 13px;
-                                margin-top: 7px;
-                                border: 1px solid #ddd;
-                                border-radius: 8px;
-                                font-size: 15px;
-                            "
+                            maxlength="30"
+                            required
+                            style="width:100%; padding:13px; margin-top:7px;
+                            border:1px solid #ddd; border-radius:8px; font-size:15px;"
                         >
+                        @error('phone')
+                            <small style="color:red;">{{ $message }}</small>
+                        @enderror
 
                     </div>
 
@@ -174,20 +183,18 @@
                         </label>
 
                         <input
-                            type="text"
-                            name="subject"
-                            placeholder="What is this about?"
-                            required
-                            style="
-                                width: 100%;
-                                padding: 13px;
-                                margin-top: 7px;
-                                border: 1px solid #ddd;
-                                border-radius: 8px;
-                                font-size: 15px;
-                            "
-                        >
-
+                                type="text"
+                                name="subject"
+                                value="{{ old('subject') }}"
+                                placeholder="What is this about?"
+                                maxlength="255"
+                                required
+                                style="width:100%; padding:13px; margin-top:7px;
+                                border:1px solid #ddd; border-radius:8px; font-size:15px;"
+                            >
+                            @error('subject')
+                                <small style="color:red;">{{ $message }}</small>
+                            @enderror
                     </div>
 
 
@@ -199,21 +206,18 @@
                         </label>
 
                         <textarea
-                            name="message"
-                            rows="5"
-                            placeholder="Write your message..."
-                            required
-                            style="
-                                width: 100%;
-                                padding: 13px;
-                                margin-top: 7px;
-                                border: 1px solid #ddd;
-                                border-radius: 8px;
-                                font-size: 15px;
-                                resize: vertical;
-                            "
-                        ></textarea>
-
+                        name="message"
+                        rows="5"
+                        maxlength="5000"
+                        placeholder="Write your message..."
+                        required
+                        style="width:100%; padding:13px; margin-top:7px;
+                        border:1px solid #ddd; border-radius:8px;
+                        font-size:15px; resize:vertical;"
+                    >{{ old('message') }}</textarea>
+                    @error('message')
+                        <small style="color:red;">{{ $message }}</small>
+                    @enderror
                     </div>
 
 
